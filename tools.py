@@ -9,3 +9,8 @@ def file_name(path:str):
 
 def file_is(path:str):
     return os.path.isfile(path)
+
+def files_folder(path:str):
+    if os.path.isdir(path):
+        for file in os.listdir(path):
+            yield file

@@ -50,12 +50,10 @@ class MyScrollableCheckboxFrame(customtkinter.CTkScrollableFrame):
     def check_remove(self):
         """remove item checkBox"""
         if self.checkboxes:
-            for check in self.checkboxes:
-                if check.get()==1:
+            checked = [cb for cb in self.checkboxes if cb.get() == 1]
+            for check in checked:
                     self.checkboxes.remove(check)
                     check.destroy()
-
-        print(self.checkboxes)
 
     
     
