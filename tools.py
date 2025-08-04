@@ -1,11 +1,11 @@
 import os
 
 
-def file_name():
-    return os.path.dirname()
+def folder_name(path:str):
+    return os.path.dirname(path)
 
-def folder_name():
-    return os.path.basename()
+def file_name(path:str):
+    return os.path.basename(path)
 
 def file_is(path:str):
     return os.path.isfile(path)
