@@ -53,15 +53,25 @@ class App(customtkinter.CTk):
             row=0,column=1,padx=0,pady=0,sticky='ew'
         )
 
+        self.btn_dist_folder = customtkinter.CTkButton(
+            self, text="Out Folder", command=self.btn_out_folder_callback
+        )
+
+        self.btn_dist_folder.grid(
+            row=0,column=2,padx=10,pady=0,sticky='ew'
+        )
+
         # Button remove item on list
         self.btn_remove_checkbx=customtkinter.CTkButton(
-            self,text='Remove',command=\
+            self,
+            height=10,
+            text='Remove Item',command=\
                 self.btn_remove_checkbx_callback
         )
 
         # Button remove item on list grid
         self.btn_remove_checkbx.grid(
-            row=0,column=2,padx=10,pady=0,sticky='ew'
+            row=0,column=3,padx=5,pady=0,sticky='ew'
         )
 
         # Class Frame and CheckBox
@@ -86,7 +96,35 @@ class App(customtkinter.CTk):
         self.btn_exit.grid(
             row=3,column=3,padx=10,pady=10,sticky="ew")
         
+        self.cb_rename=customtkinter.CTkCheckBox(
+            self,text="Rename",
+            font=customtkinter.CTkFont(size=12),
+            hover=True, checkbox_height=20, checkbox_width=20,
+            command=self.cb_rename_callback
+        )
+        self.cb_rename.grid(
+            row=3,column=0,padx=10,pady=10,sticky='ew'
+        )
 
+        self.cb_ext=customtkinter.CTkCheckBox(
+            self, text="Extension",
+            font=customtkinter.CTkFont(size=12),
+            hover=True, checkbox_height=20, checkbox_width=20,
+            command=self.cb_ext_callback
+        )
+
+        self.cb_ext.grid(
+            row=3, column=1, padx=0, pady=0, sticky='ew'
+        )
+
+        self.btn_excet=customtkinter.CTkButton(
+            self,text="Execute",
+            command=self.btn_excet_callback
+        )
+
+        self.btn_excet.grid(
+            row=3,column=2,padx=10,pady=10,sticky='ew'
+        )
 
     # Command call back
     def btn_add_folders_callback(self):
@@ -129,7 +167,7 @@ class App(customtkinter.CTk):
         
         for i in self.path_list:
             if file_is(i):
-                print(i)
+                # print(i)
                 name_of_path=file_name(i)
                 self.scrollable_checkbox_frame.add_label(
                     text=name_of_path,path_file=i,
@@ -145,7 +183,15 @@ class App(customtkinter.CTk):
         """Button remove callback"""
         self.path_remove()
 
+    def btn_out_folder_callback(self):
+        pass
+    def cb_rename_callback(self):
+        pass
+    def cb_ext_callback(self):
+        pass
 
+    def btn_excet_callback(self):
+        pass
 if __name__=='__main__':
     app = App()
     app.mainloop()
