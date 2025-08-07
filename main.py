@@ -18,8 +18,14 @@ class App(customtkinter.CTk):
 
         # size of window
         self.geometry("500x500")
+
+        # save path list in the frame
         self.path_list=[]
+
+        # counter for row item in frame
         self.row_counter=0
+
+        self.path_out=''
 
         self.grid_columnconfigure(0, weight=1)
         self.grid_columnconfigure(1, weight=1)
@@ -53,10 +59,12 @@ class App(customtkinter.CTk):
             row=0,column=1,padx=0,pady=0,sticky='ew'
         )
 
+        # Button select distination output
         self.btn_dist_folder = customtkinter.CTkButton(
             self, text="Out Folder", command=self.btn_out_folder_callback
         )
 
+        # Button select distination output grid
         self.btn_dist_folder.grid(
             row=0,column=2,padx=10,pady=0,sticky='ew'
         )
@@ -96,16 +104,21 @@ class App(customtkinter.CTk):
         self.btn_exit.grid(
             row=3,column=3,padx=10,pady=10,sticky="ew")
         
+
+        # CheckBox rename file
         self.cb_rename=customtkinter.CTkCheckBox(
             self,text="Rename",
             font=customtkinter.CTkFont(size=12),
             hover=True, checkbox_height=20, checkbox_width=20,
             command=self.cb_rename_callback
         )
+
+        # CheckBox rename file grid
         self.cb_rename.grid(
             row=3,column=0,padx=10,pady=10,sticky='ew'
         )
 
+        # CheckBox change random ext file
         self.cb_ext=customtkinter.CTkCheckBox(
             self, text="Extension",
             font=customtkinter.CTkFont(size=12),
@@ -113,15 +126,19 @@ class App(customtkinter.CTk):
             command=self.cb_ext_callback
         )
 
+        # CheckBox change random ext file grid
         self.cb_ext.grid(
             row=3, column=1, padx=0, pady=0, sticky='ew'
         )
 
+
+        # Button to execution main
         self.btn_excet=customtkinter.CTkButton(
             self,text="Execute",
             command=self.btn_excet_callback
         )
-
+        
+        # Button to execution main grid
         self.btn_excet.grid(
             row=3,column=2,padx=10,pady=10,sticky='ew'
         )
@@ -184,14 +201,18 @@ class App(customtkinter.CTk):
         self.path_remove()
 
     def btn_out_folder_callback(self):
-        pass
+        path_out=fd.askdirectory()
+        if path_out:
+            self.path_out=path_out
+        else:
+            print('Not found folder')
     def cb_rename_callback(self):
         pass
     def cb_ext_callback(self):
         pass
-
     def btn_excet_callback(self):
         pass
+
 if __name__=='__main__':
     app = App()
     app.mainloop()

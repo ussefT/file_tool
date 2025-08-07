@@ -1,6 +1,15 @@
 import os
 
 
+def file_rename(path:str):
+    os.rename(path)
+
+def file_search(path:str):
+    return path if os.path.exists(path) else 'Not Found'
+
+def folder_create(path:str='out'):
+    os.mkdir(path)
+
 def folder_name(path:str):
     return os.path.dirname(path)
 
